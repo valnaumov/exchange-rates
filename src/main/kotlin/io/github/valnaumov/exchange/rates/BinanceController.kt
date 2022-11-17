@@ -14,13 +14,13 @@ class BinanceController {
     @Inject
     lateinit var binanceService: BinanceService
 
-    @Get(uri = "/", produces = ["text/plain"])
-    fun index(
+    @Get(uri = "/buy", produces = ["text/plain"])
+    fun buyRate(
         @QueryValue(value = "asset", defaultValue = "USDT") asset: String,
         @QueryValue(value = "fiat", defaultValue = "RUB") fiat: String,
         @QueryValue(value = "tradeMethod", defaultValue = "TinkoffNew") tradeMethod: String
     ): Double {
-        return binanceService.getRate(asset, fiat, tradeMethod)
+        return binanceService.getBuyRate(asset, fiat, tradeMethod)
     }
 
 //    fun tradeMethods(): JsonArray {

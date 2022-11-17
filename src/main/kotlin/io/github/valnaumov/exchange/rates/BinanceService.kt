@@ -21,7 +21,7 @@ class BinanceService {
     @Inject
     lateinit var httpClient: HttpClient
 
-    fun getRate(asset: String, fiat: String, tradeMethod: String): Double {
+    fun getBuyRate(asset: String, fiat: String, tradeMethod: String): Double {
         val body = """{
           "proMerchantAds": false,
           "page": 1,
