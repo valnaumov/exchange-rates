@@ -14,6 +14,7 @@ class BinanceController {
     @Inject
     lateinit var binanceService: BinanceService
 
+    // todo sell rate, amount, trade methods, mean (across "real" banks)
     @Get(uri = "/buy", produces = ["text/plain"])
     fun buyRate(
         @QueryValue(value = "asset", defaultValue = "USDT") asset: String,

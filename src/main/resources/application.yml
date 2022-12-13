@@ -1,0 +1,5 @@
+micronaut:
+  caches:
+    mirCurrentRate:
+      charset: 'UTF-8'
+      expire-after-access: 'PT1M'
