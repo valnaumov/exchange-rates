@@ -2,6 +2,7 @@ package io.github.valnaumov.exchange.rates
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
+import io.micronaut.cache.annotation.Cacheable
 import io.micronaut.http.HttpRequest.POST
 import io.micronaut.http.MediaType
 import io.micronaut.http.client.HttpClient
@@ -15,13 +16,14 @@ private const val RATE_URL = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/a
  * @author Valentin
  */
 @Singleton
-class BinanceService {
+open class BinanceService {
 
     @Client
     @Inject
     lateinit var httpClient: HttpClient
 
-    fun getBuyRate(asset: String, fiat: String, tradeMethod: String): Double {
+    @Cacheable("binance")
+    open fun getBuyRate(asset: String, fiat: String, tradeMethod: String): Double {
         val body = """{
           "proMerchantAds": false,
           "page": 1,
